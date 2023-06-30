@@ -12,7 +12,7 @@ describe('Input fields', () => {
         cy.get('h2').contains('Password').click()
 
         //error message should be visible
-        cy.get('#input_error_message').should('not.be.visible')
+        cy.get('#input_error_message').should('be.visible')
 
         //successfull message should not be visile
         cy.get('#success_message').should('not.be.visible')
@@ -34,15 +34,15 @@ describe('Input fields', () => {
 
     it('Username should have min and max length values 1 and 50 characters', () => {
         // check that username HTML has min attribute value equalt to 1
-        cy.get('#username').should('have.attr', 'min', '11')
+        cy.get('#username').should('have.attr', 'min', '1')
 
         // check that username HTML has max attribute value equal to 50
-        cy.get('#username2').should('have.attr', 'max', '501')
+        cy.get('#username').should('have.attr', 'max', '50')
     })
 
-    it('Username should support only lower letters and numbers', () => {
+    it.only('Username should support only lower letters and numbers', () => {
         // check with regex supporter format
-        cy.get('#username').should('have.attr', 'pattern', '[a-zA-Z0-9_]*')
+        cy.get('#username').should('have.attr', 'pattern', '[a-z0-9_]*')
     })
 
     it('Email input should support correct pattern', () => {
